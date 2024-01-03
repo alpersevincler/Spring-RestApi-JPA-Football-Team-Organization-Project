@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalException {
 
-    // Oluşturulan validasyonlardada herhangi bir hata olursa geriye global halde bad request cevabını gönderecektir.
+    // Oluşturulan validasyonlarda herhangi bir hata olursa geriye global halde bad request cevabını gönderecektir.
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity methodArgumentNot(MethodArgumentNotValidException ex ) {
         return new ResponseEntity(ex.getFieldErrors(), HttpStatus.BAD_REQUEST);
