@@ -19,7 +19,7 @@ public class FootballerRestController {
         return footballerService.register(footballer);
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity login(@RequestBody Footballer footballer) {
         return footballerService.login(footballer);
     }
