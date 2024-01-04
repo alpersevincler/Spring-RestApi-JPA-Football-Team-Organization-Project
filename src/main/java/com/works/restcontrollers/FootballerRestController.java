@@ -24,4 +24,9 @@ public class FootballerRestController {
         return footballerService.login(footballer);
     }
 
+    @GetMapping("/teamCreate")
+    public ResponseEntity teamCreate() {
+        return footballerService.teamCreate();
+    }
+
 }
