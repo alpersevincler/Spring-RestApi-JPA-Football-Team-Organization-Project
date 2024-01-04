@@ -1,6 +1,7 @@
 package com.works.services;
 
 import com.works.entities.Footballer;
+import com.works.projections.IFootballer;
 import com.works.repositories.FootballerRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -39,6 +43,17 @@ public class FootballerService {
         }else {
             return new ResponseEntity("Error: The email address or password is incorrect", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public ResponseEntity teamCreate() {
+        List<IFootballer> alist = footballerRepository.getTeamCreate("A", 6,0);
+        List<IFootballer> blist = footballerRepository.getTeamCreate("B",6,0);
+
+        Map hm = new LinkedHashMap();
+        hm.put( "A", alist );
+        hm.put( "B", blist );
+
+        return new ResponseEntity(hm,HttpStatus.OK);
     }
 
 }
