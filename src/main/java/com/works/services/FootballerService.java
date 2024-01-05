@@ -1,8 +1,10 @@
 package com.works.services;
 
 import com.works.entities.Footballer;
+import com.works.entities.Team;
 import com.works.projections.IFootballer;
 import com.works.repositories.FootballerRepository;
+import com.works.repositories.TeamRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,7 @@ import java.util.Optional;
 public class FootballerService {
 
     final FootballerRepository footballerRepository;
+    final TeamRepository teamRepository;
     final HttpServletRequest req;
 
     public ResponseEntity register(Footballer footballer) {
@@ -66,6 +69,17 @@ public class FootballerService {
         hm.put( "Substitute team B", blist );
 
         return new ResponseEntity(hm,HttpStatus.OK);
+    }
+
+
+    public ResponseEntity allCreate() {
+        List<Team> allTeams = teamRepository.findAll();
+        Map hm = new LinkedHashMap();
+        for ( Team item : allTeams ) {
+            List<IFootballer> list = footballerRepository.getTeamCreate(item.getName(), 6, 0);
+            hm.put(item.getName(), list );
+        }
+        return new ResponseEntity(hm, HttpStatus.OK);
     }
 
 }
