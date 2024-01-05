@@ -56,4 +56,16 @@ public class FootballerService {
         return new ResponseEntity(hm,HttpStatus.OK);
     }
 
+
+    public ResponseEntity backUpCreate() {
+        List<IFootballer> alist = footballerRepository.getTeamCreate("A", 3,7);
+        List<IFootballer> blist = footballerRepository.getTeamCreate("B",3,7);
+
+        Map hm = new LinkedHashMap();
+        hm.put( "Team A", alist );
+        hm.put( "Team B", blist );
+
+        return new ResponseEntity(hm,HttpStatus.OK);
+    }
+
 }

@@ -29,4 +29,10 @@ public class FootballerRestController {
         return footballerService.teamCreate();
     }
 
+
+    @GetMapping("/backUpCreate")
+    public ResponseEntity backUpCreate() {
+        return footballerService.backUpCreate();
+    }
+
 }
