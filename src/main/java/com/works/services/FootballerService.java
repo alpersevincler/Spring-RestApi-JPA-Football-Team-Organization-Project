@@ -62,8 +62,8 @@ public class FootballerService {
         List<IFootballer> blist = footballerRepository.getTeamCreate("B",3,7);
 
         Map hm = new LinkedHashMap();
-        hm.put( "Team A", alist );
-        hm.put( "Team B", blist );
+        hm.put( "Substitute team A", alist );
+        hm.put( "Substitute team B", blist );
 
         return new ResponseEntity(hm,HttpStatus.OK);
     }
